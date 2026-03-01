@@ -1,6 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+  #pw-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: #0F1720;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 99999; font-family: 'DM Sans', sans-serif;
+  }
+  #pw-box {
+    background: #1A2332;
+    border: 1px solid #2E3F56;
+    border-radius: 12px;
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  }
+  #pw-logo {
+    font-size: 22px;
+    font-weight: 500;
+    color: #F5F2ED;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  #pw-subtitle {
+    font-size: 13px;
+    color: #8A9BB0;
+    margin-bottom: 36px;
+    letter-spacing: 0.02em;
+  }
+  #pw-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #0F1720;
+    border: 1px solid #2E3F56;
+    border-radius: 8px;
+    color: #F5F2ED;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+    letter-spacing: 0.06em;
+    transition: border-color 0.2s;
+  }
+  #pw-input:focus { border-color: #C8A96E; }
+  #pw-input.error { border-color: #e05c5c; }
+  #pw-btn {
+    width: 100%;
+    padding: 14px;
+    background: #C8A96E;
+    color: #0F1720;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  #pw-btn:hover { background: #d4b87a; }
+  #pw-error {
+    color: #e05c5c;
+    font-size: 13px;
+    margin-top: 12px;
+    min-height: 18px;
+  }
+</style>
+<script>
+  (function() {
+    if (sessionStorage.getItem('di_auth') === '1') return;
+    document.documentElement.style.visibility = 'hidden';
+    document.addEventListener('DOMContentLoaded', function() {
+      var overlay = document.createElement('div');
+      overlay.id = 'pw-overlay';
+      overlay.innerHTML = '<div id="pw-box">' +
+        '<div id="pw-logo">DEMIROREN INVESTMENTS</div>' +
+        '<div id="pw-subtitle">Private Access</div>' +
+        '<input id="pw-input" type="password" placeholder="Enter password" autocomplete="current-password" />' +
+        '<button id="pw-btn">Enter</button>' +
+        '<div id="pw-error"></div>' +
+        '</div>';
+      document.body.appendChild(overlay);
+      document.documentElement.style.visibility = 'visible';
+      function unlock() {
+        var val = document.getElementById('pw-input').value;
+        if (val === 'Demiroren2025') {
+          sessionStorage.setItem('di_auth', '1');
+          overlay.style.transition = 'opacity 0.4s';
+          overlay.style.opacity = '0';
+          setTimeout(function() { overlay.remove(); }, 420);
+        } else {
+          document.getElementById('pw-input').classList.add('error');
+          document.getElementById('pw-error').textContent = 'Incorrect password. Please try again.';
+          setTimeout(function() {
+            document.getElementById('pw-input').classList.remove('error');
+          }, 1500);
+        }
+      }
+      document.getElementById('pw-btn').addEventListener('click', unlock);
+      document.getElementById('pw-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') unlock();
+      });
+    });
+  })();
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="doc-title">Fikret Tayfun Demiroren | Demiroren Investments</title>
