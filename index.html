@@ -1,106 +1,147 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fikret Tayfun Demiroren | Demiroren Investments</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title id="doc-title">Fikret Tayfun Demiroren | Demiroren Investments</title>
+    <meta id="doc-desc" name="description" content="Demiroren Investments is the private investment platform of Fikret Tayfun Demiroren, a European investor and entrepreneur focused on long-term value creation, disciplined capital allocation, and enduring partnerships.">
+    <meta property="og:title" content="Fikret Tayfun Demiroren | Demiroren Investments">
+    <meta property="og:description" content="European investor and entrepreneur. Long-term value creation across real assets, financial services, and infrastructure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://demiroreninvestments.co.uk">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://demiroreninvestments.co.uk/#tayfun",
+          "name": "Fikret Tayfun Demiroren",
+          "alternateName": "Tayfun Demiroren",
+          "jobTitle": "Investor and Entrepreneur",
+          "description": "European investor and entrepreneur focused on long-term value creation, disciplined capital allocation, and enduring partnerships across real assets, financial services, and infrastructure.",
+          "url": "https://demiroreninvestments.co.uk",
+          "sameAs": []
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://demiroreninvestments.co.uk/#org",
+          "name": "Demiroren Investments",
+          "url": "https://demiroreninvestments.co.uk",
+          "founder": {"@id": "https://demiroreninvestments.co.uk/#tayfun"},
+          "description": "Private European investment platform founded by Fikret Tayfun Demiroren."
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --navy: #1A2332; --navy-d: #0F1720; --mid: #2E3F56; --warm: #F5F2ED; --cream: #EDE9E1; --stone: #C8BFB0;
+            --text: #3B4556; --muted: #6B7280; --red: #C41E3A; --serif: 'EB Garamond', Georgia, serif;
+            --sans: 'DM Sans', system-ui, sans-serif; --t: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--sans); background: var(--navy-d); color: var(--warm); -webkit-font-smoothing: antialiased; }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; height: 72px; transition: background var(--t), border-color var(--t); }
+        nav.solid { background: rgba(15,23,32,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(245,242,237,0.07); }
+        .nav-brand { display: flex; flex-direction: column; gap: 2px; cursor: pointer; }
+        .nav-name { font-family: var(--serif); font-size: 14px; letter-spacing: 0.04em; color: var(--warm); font-weight: 500; line-height: 1; transition: opacity var(--t); }
+        .nav-firm { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,242,237,0.32); line-height: 1; }
+        .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+        .nav-links button { font-size: 11px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(245,242,237,0.42); background: none; border: none; cursor: pointer; transition: color var(--t); padding: 0; position: relative; }
+        .nav-links button::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform var(--t); }
+        .nav-links button:hover, .nav-links button.active { color: var(--warm); }
+        .nav-links button.active::after, .nav-links button:hover::after { transform: scaleX(1); }
+        .nav-cta { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm); border: 1px solid rgba(245,242,237,0.2); padding: 10px 22px; background: none; cursor: pointer; transition: background var(--t), border-color var(--t); }
+        .nav-cta:hover { background: rgba(245,242,237,0.07); border-color: rgba(245,242,237,0.38); }
+        .page { display: none; min-height: 100vh; } .page.active { display: block; }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; background: var(--navy); }
+        .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+        .hero-bg::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 55% at 70% 35%, rgba(46,63,86,0.55) 0%, transparent 65%), radial-gradient(ellipse 45% 35% at 0% 80%, rgba(196,30,58,0.07) 0%, transparent 55%), linear-gradient(170deg, rgba(15,23,32,0.5) 0%, transparent 50%); }
+        .hero-content { position: relative; z-index: 2; padding: 0 52px 72px 88px; max-width: 1300px; width: 100%; }
+        .hero-name { font-family: var(--serif); font-weight: 400; font-size: clamp(54px, 9.5vw, 122px); line-height: 0.92; letter-spacing: -0.03em; color: var(--warm); margin-bottom: 12px; }
+        .hero-role { font-size: clamp(12px, 1.4vw, 15px); letter-spacing: 0.18em; text-transform: uppercase; color: rgba(245,242,237,0.38); margin-top: 28px; margin-bottom: 56px; opacity: 0; animation: fade 0.7s ease 0.55s forwards; }
+        .bio-section { background: var(--warm); padding: 100px 52px; }
+        .bio-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 100px; }
+        .bio-left h2 { font-family: var(--serif); font-size: 36px; font-weight: 400; color: var(--navy); line-height: 1.1; }
+        .bio-right p { font-family: var(--serif); font-size: 20px; line-height: 1.85; color: var(--text); }
+        .approach-section { background: var(--navy-d); padding: 100px 52px; }
+        .approach-grid { display: grid; grid-template-columns: 1fr 1fr; }
+        .writing-teaser { background: var(--warm); padding: 100px 52px; border-top: 1px solid var(--stone); }
+        .contact-section { background: var(--navy-d); padding: 88px 52px; border-top: 1px solid rgba(245,242,237,0.05); }
+        .site-footer { background: var(--navy-d); padding: 32px 52px; border-top: 1px solid rgba(245,242,237,0.06); }
+        @keyframes up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .reveal.shown { opacity: 1; transform: translateY(0); }
+        @media (max-width: 860px) {
+            nav { padding: 0 24px; } .nav-links { display: none; }
+            .hero-content { padding: 0 24px 56px 40px; } .bio-inner { grid-template-columns: 1fr; gap: 40px; }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">DEMIROREN INVESTMENT</a>
-                <nav>
-                    <ul>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#expertise">Expertise</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
-            </div>
+    <nav id="main-nav">
+        <div class="nav-brand" onclick="showPage('home')">
+            <span class="nav-name">Fikret Tayfun Demiroren</span>
+            <span class="nav-firm">Demiroren Investments</span>
         </div>
-    </header>
+        <ul class="nav-links">
+            <li><button data-page="home" onclick="showPage('home')">Home</button></li>
+            <li><button data-page="home" onclick="goTo('home','#about')">About</button></li>
+            <li><button data-page="home" onclick="goTo('home','#approach')">Approach</button></li>
+            <li><button data-page="writing" onclick="showPage('writing')">Writing</button></li>
+        </ul>
+        <button class="nav-cta" onclick="goTo('home','#contact')">Get in touch</button>
+    </nav>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Investing in Your Future</h1>
-            <p>Strategic investment advisory and portfolio management across real estate, fintech, and emerging markets</p>
-        </div>
-    </section>
+    <div id="page-home" class="page">
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1 class="hero-name">Fikret Tayfun Demiroren</h1>
+                <p class="hero-role">European Investor & Entrepreneur</p>
+            </div>
+        </section>
+        <section class="bio-section" id="about">
+            <div class="bio-inner">
+                <div class="bio-left"><h2>About</h2></div>
+                <div class="bio-right">
+                    <p>Fikret Tayfun Demiroren is a European investor and entrepreneur with a long-term approach to business building and strategic partnerships.</p>
+                </div>
+            </div>
+        </section>
+        <section class="contact-section" id="contact">
+            <div class="contact-inner">
+                <a class="contact-email" href="mailto:contact@demiroreninvestments.co.uk">contact@demiroreninvestments.co.uk</a>
+            </div>
+        </section>
+    </div>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Fikret Tayfun Demiroren</h2>
-            <div class="section-divider"></div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Fikret Tayfun Demiroren is an investment professional with extensive experience in real estate, fintech, and strategic advisory. Based in London with operations across Europe, he specializes in identifying value creation opportunities in traditional and emerging asset classes.</p>
-                    <p>With a focus on cross-border transactions and regulatory structuring, Tayfun has advised on investments spanning UK, Germany, Luxembourg, and Nordic markets. His approach combines rigorous financial analysis with deep market knowledge to deliver sustainable returns for stakeholders.</p>
-                </div>
-            </div>
-            <div class="domicile-section">
-                <h3>Domicile & Structure</h3>
-                <p>Demiroren Investments operates as a privately-held investment advisory firm domiciled in the United Kingdom. The firm maintains strategic partnerships across key European financial centres, including London, Luxembourg, and Frankfurt, enabling efficient cross-border transaction execution and regulatory compliance.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="expertise">
-        <div class="container">
-            <h2>Areas of Expertise</h2>
-            <div class="section-divider"></div>
-            <div class="expertise-grid">
-                <div class="expertise-card">
-                    <h3>Real Estate Investment</h3>
-                    <p>Development and acquisition strategies across residential, commercial, and mixed-use properties in high-growth European markets.</p>
-                </div>
-                <div class="expertise-card">
-                    <h3>Fintech & Digital Assets</h3>
-                    <p>Strategic advisory for financial technology ventures and digital asset infrastructure.</p>
-                </div>
-                <div class="expertise-card">
-                    <h3>Portfolio Strategy</h3>
-                    <p>Comprehensive portfolio construction and risk management for institutional and private investors.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <div class="section-divider"></div>
-            <p style="text-align:center;">Drop us a line</p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <h3>Demiroren Investments</h3>
-                    <p>Strategic investment advisory across Europe and emerging markets.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms & Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li>London, UK</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Demiroren Investments. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <script>
+        const PAGES = ['home','writing','qa','piece1','piece2'];
+        let current = 'home';
+        function showPage(id) {
+            document.getElementById('page-' + current).classList.remove('active');
+            current = id;
+            document.getElementById('page-' + id).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+        function goTo(page, anchor) {
+            if (current !== page) showPage(page);
+            setTimeout(() => {
+                const el = document.querySelector(anchor);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+        window.addEventListener('scroll', () => {
+            document.getElementById('main-nav').classList.toggle('solid', window.scrollY > 60);
+        }, { passive: true });
+        showPage('home');
+    </script>
 </body>
 </html>
